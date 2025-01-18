@@ -23,6 +23,10 @@ public class ContentCollectionRepository {
         return contents.stream().filter(c -> c.id().equals(id)).findFirst();
     }
 
+    public void save(Content content) {
+         contents.add(content);
+    }
+
     @PostConstruct
     public void init() {
         Content c = new Content(1,
