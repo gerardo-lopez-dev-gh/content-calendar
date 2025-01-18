@@ -2,12 +2,13 @@ package com.devgerar.content_calendar.controller;
 
 import com.devgerar.content_calendar.model.Content;
 import com.devgerar.content_calendar.repository.ContentCollectionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/content")
@@ -24,6 +25,13 @@ public class ContentController {
     public List<Content> findAll() {
         return contentCollectionRepository.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Optional<Content> findById(@PathVariable Integer id) {
+        return contentCollectionRepository.findById(id);
+    }
+
+
 
 
 }
