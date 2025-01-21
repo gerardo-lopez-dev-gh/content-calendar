@@ -24,7 +24,12 @@ public class ContentCollectionRepository {
     }
 
     public void save(Content content) {
+         contents.removeIf(c -> c.id().equals(content.id()));
          contents.add(content);
+    }
+
+    public void delete(Integer id) {
+        contents.removeIf(c -> c.id().equals(id));
     }
 
     @PostConstruct
@@ -39,5 +44,9 @@ public class ContentCollectionRepository {
                 "");
 
         contents.add(c);
+    }
+
+    public boolean existsById(Integer id) {
+        return contents.stream().filter(c -> c.id().equals(id)).findFirst().isPresent();
     }
 }
