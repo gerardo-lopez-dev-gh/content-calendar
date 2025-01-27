@@ -2,6 +2,7 @@ package com.devgerar.content_calendar.controller;
 
 import com.devgerar.content_calendar.model.Content;
 import com.devgerar.content_calendar.repository.ContentCollectionRepository;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -33,7 +34,7 @@ public class ContentController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
-    public void create (@RequestBody Content content) {
+    public void create (@Valid @RequestBody Content content) {
         contentCollectionRepository.save(content);
     }
 
